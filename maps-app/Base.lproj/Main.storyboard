@@ -21,22 +21,36 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="u06-Lf-2ih">
                                 <rect key="frame" x="0.0" y="44" width="414" height="738"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Qe-cy-6a3">
+                                <rect key="frame" x="80" y="819" width="255" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="u06-Lf-2ih" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="77r-WN-YSc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Qe-cy-6a3" secondAttribute="bottom" constant="16" id="DlB-f4-pQf"/>
                             <constraint firstItem="u06-Lf-2ih" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="F2x-RL-Dy1"/>
+                            <constraint firstItem="4Qe-cy-6a3" firstAttribute="top" secondItem="u06-Lf-2ih" secondAttribute="bottom" constant="37" id="Gkt-Qh-Vir"/>
+                            <constraint firstItem="4Qe-cy-6a3" firstAttribute="centerX" secondItem="u06-Lf-2ih" secondAttribute="centerX" id="H4l-JD-gtA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="u06-Lf-2ih" secondAttribute="bottom" constant="80" id="dWX-mN-2so"/>
+                            <constraint firstItem="4Qe-cy-6a3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="hBY-oW-lfv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u06-Lf-2ih" secondAttribute="trailing" id="lUC-n0-2aw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="u06-Lf-2ih" id="3zC-Eg-P96"/>
+                        <outlet property="segmentedControl" destination="4Qe-cy-6a3" id="oAP-ky-cyL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="82.608695652173921" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>

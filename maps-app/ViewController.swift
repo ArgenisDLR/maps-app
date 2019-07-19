@@ -13,6 +13,8 @@ class ViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
   
+  @IBOutlet weak var segmentedControl: UISegmentedControl!
+  
   fileprivate let locationManager = CLLocationManager()
 
   override func viewDidLoad() {
@@ -26,6 +28,21 @@ class ViewController: UIViewController {
     
     mapView.showsUserLocation = true
     mapView.delegate = self
+    
+    segmentedControl.addTarget(self, action: #selector(switchType), for: .valueChanged)
+  }
+  
+  @objc func switchType() {
+    switch segmentedControl.selectedSegmentIndex {
+    case 0:
+      mapView.mapType = .standard
+    case 1:
+      mapView.mapType = .satellite
+    case 2:
+      mapView.mapType = .hybrid
+    default:
+      return
+    }
   }
 
 
