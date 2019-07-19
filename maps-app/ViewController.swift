@@ -12,7 +12,6 @@ import MapKit
 class ViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
-  
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   
   fileprivate let locationManager = CLLocationManager()
@@ -32,7 +31,21 @@ class ViewController: UIViewController {
     segmentedControl.addTarget(self, action: #selector(switchType), for: .valueChanged)
   }
   
-  @objc func switchType() {
+  // adding the annotations
+  fileprivate func addAnnotationToMap() {
+    
+    let annotation = MKPointAnnotation()
+    
+//    annotation.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
+    
+    annotation.title = "Argenis is out here!"
+    annotation.subtitle = "Learning to code better!"
+    annotation.coordinate = mapView.userLocation.coordinate
+    mapView.addAnnotation(annotation)
+  }
+  
+  // segmented control option at bottom of view controller
+  @objc fileprivate func switchType() {
     switch segmentedControl.selectedSegmentIndex {
     case 0:
       mapView.mapType = .standard
@@ -44,8 +57,6 @@ class ViewController: UIViewController {
       return
     }
   }
-
-
 }
 
 extension ViewController: CLLocationManagerDelegate {
@@ -55,9 +66,11 @@ extension ViewController: CLLocationManagerDelegate {
 
 extension ViewController: MKMapViewDelegate {
   
+  // update the user location
   func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-    let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 10, longitudinalMeters: 10)
+    let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
     mapView.setRegion(region, animated: true)
+    addAnnotationToMap()
   }
   
 }
