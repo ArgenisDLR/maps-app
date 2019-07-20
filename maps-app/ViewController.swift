@@ -73,4 +73,13 @@ extension ViewController: MKMapViewDelegate {
     addAnnotationToMap()
   }
   
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    if annotation is MKUserLocation { return nil }
+    
+//    var marker = mapView.dequeueReusableAnnotationView(withIdentifier: "annotation") as? MKMarkerAnnotationView
+    
+    let marker = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
+    return marker
+  }
+  
 }
