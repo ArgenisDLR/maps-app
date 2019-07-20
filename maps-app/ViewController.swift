@@ -79,6 +79,10 @@ extension ViewController: MKMapViewDelegate {
 //    var marker = mapView.dequeueReusableAnnotationView(withIdentifier: "annotation") as? MKMarkerAnnotationView
     
     let marker = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
+    marker.glyphText = "coffee"
+    marker.canShowCallout = true
+    marker.leftCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "pin"))
+    marker.rightCalloutAccessoryView = UIImageView(image: #imageLiteral(resourceName: "chevron"))
     return marker
   }
   
